@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --bg-cream: #F7F2EB;
+    --accent-lime: #B5F714;
+    --accent-lime-hover: #A2E20E;
+    --primary-dark: #111A05;
+    --text-primary: #1C2612;
+    --text-muted: #54653D;
+    --border-subtle: #D2D9C5;
+  }
+
+  body {
+    background-color: #F7F2EB;
+    color: #1C2612;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+}
+
+/* Warm cream and subtle sage pattern background */
+.bg-cream-radial {
+  background: radial-gradient(circle at 50% 0%, rgba(181, 247, 20, 0.08) 0%, rgba(139, 154, 110, 0.06) 25%, rgba(247, 242, 235, 0) 70%);
+}
+
+.bg-cream-grid {
+  background-size: 28px 28px;
+  background-image: 
+    linear-gradient(to right, rgba(139, 154, 110, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(139, 154, 110, 0.08) 1px, transparent 1px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #EFE9DF;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #A0B083;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #849666;
+}
+

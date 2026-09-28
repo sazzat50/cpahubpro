@@ -1,0 +1,67 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Local backend support for local testing (npx decap-server)
+local_backend: true
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  # 1. Offers Collection
+  - name: "offers"
+    label: "CPA Offers & Smartlinks"
+    folder: "content/offers"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: true
+    fields:
+      - { label: "Offer Name", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["Dating", "Gaming", "E-commerce", "Finance & Crypto", "Nutra & Health", "Sweepstakes", "Software & Utilities", "Smartlinks", "Surveys & Rewards"] }
+      - { label: "Payout Amount", name: "payout", widget: "string", hint: "e.g., $4.50 CPA, €12.00 CPL, 40% RevShare" }
+      - { label: "Payout Value Numeric", name: "payoutValue", widget: "number", value_type: "float", hint: "Numeric payout for sorting" }
+      - { label: "Smartlink / Affiliate URL", name: "affiliateUrl", widget: "string" }
+      - { label: "Target Countries / GEOs", name: "targetGeos", widget: "list", hint: "e.g., US, UK, CA, DE, AU, Global" }
+      - { label: "Network Name", name: "network", widget: "string", default: "TopCPA Network" }
+      - { label: "Offer Type", name: "type", widget: "select", options: ["CPA", "CPL", "Smartlink", "RevShare", "CPI"], default: "CPA" }
+      - { label: "Device Targeting", name: "device", widget: "select", options: ["All Devices", "Mobile Only (iOS/Android)", "Desktop Only"], default: "All Devices" }
+      - { label: "Conversion Rate (CR %)", name: "cr", widget: "string", default: "14.2%" }
+      - { label: "Average EPC", name: "epc", widget: "string", default: "$0.84" }
+      - { label: "Featured Offer", name: "featured", widget: "boolean", default: false }
+      - { label: "Description", name: "description", widget: "markdown" }
+      - { label: "Terms & Restrictions", name: "terms", widget: "string", required: false, default: "No incent, No bot traffic. Search, Native, Social, and Display allowed." }
+
+  # 2. Featured Sidebar Items (Left Section)
+  - name: "featured_networks"
+    label: "Featured Sponsors & Networks"
+    folder: "content/sponsors"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Sponsor/Network Name", name: "name", widget: "string" }
+      - { label: "Logo Image", name: "logo", widget: "image" }
+      - { label: "Rating Score", name: "rating", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1, default: 4.9 }
+      - { label: "Review Count", name: "reviewCount", widget: "number", default: 120 }
+      - { label: "Target Link", name: "link", widget: "string" }
+      - { label: "Min Payout", name: "minPayout", widget: "string", default: "$50" }
+      - { label: "Payment Frequency", name: "paymentFrequency", widget: "string", default: "Weekly / Net-7" }
+      - { label: "Badge / Tagline", name: "tagline", widget: "string", default: "Top Verified Network" }
+      - { label: "Featured Order", name: "order", widget: "number", default: 1 }
+
+  # 3. Ad Spaces & Adsterra Scripts (Right Banner Section)
+  - name: "ad_spaces"
+    label: "Ad Spaces & Adsterra Scripts"
+    folder: "content/ads"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Ad Placement Name", name: "name", widget: "string", hint: "e.g., Header Banner, Main Top Right Banner, Sidebar Sticky" }
+      - { label: "Placement Key", name: "key", widget: "select", options: ["top_banner", "sidebar_ad", "offer_feed_infeed", "footer_banner"], default: "top_banner" }
+      - { label: "Ad Type", name: "adType", widget: "select", options: ["Raw HTML Script Code (Adsterra/Popads)", "Image Banner with Link"] }
+      - { label: "Active Toggle", name: "active", widget: "boolean", default: true }
+      - { label: "Raw HTML / Script Code", name: "htmlCode", widget: "code", required: false, hint: "Paste Adsterra, PopAds, or custom JavaScript / banner HTML code" }
+      - { label: "Image Banner URL", name: "imageUrl", widget: "image", required: false }
+      - { label: "Destination Target URL", name: "targetUrl", widget: "string", required: false }
+      - { label: "Alt Text / Ad Label", name: "altText", widget: "string", required: false, default: "Sponsored Partner Ad" }

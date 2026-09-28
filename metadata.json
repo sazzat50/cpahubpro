@@ -1,0 +1,8 @@
+{
+  "name": "CPAHub - Offer Listing & Smartlink Directory",
+  "description": "Premier CPA offer and Smartlink directory featuring verified networks, top converting affiliate offers, real-time payouts, GEO filtering, and Decap CMS integration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
